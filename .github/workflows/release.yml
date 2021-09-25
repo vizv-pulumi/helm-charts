@@ -25,7 +25,6 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: rancher/local-path-provisioner
-        fetch-depth: 0
         path: tmp/local-path-provisioner
     - name: Commit local-path-provisioner charts
       run: |
@@ -35,9 +34,28 @@ jobs:
         git commit -am 'Commit local-path-provisioner charts'
         rm -rf tmp/local-path-provisioner
 
+    # Add ingress-nginx charts
+    - name: Checkout ingress-nginx
+      uses: actions/checkout@v2
+      with:
+        repository: kubernetes/ingress-nginx
+        path: tmp/ingress-nginx
+    - name: Commit ingress-nginx charts
+      run: |
+        mkdir -p charts
+        cp -a tmp/ingress-nginx/charts/ingress-nginx charts/ingress-nginx
+        git add -A
+        git commit -am 'Commit ingress-nginx charts'
+        rm -rf tmp/ingress-nginx
+
+    # Push!
+    - name: Push to release branch
+      run: |
+        git checkout -b release
+        git push origin release -f
+
     # Release!
     - name: Run chart-releaser
       uses: vizv-pulumi/chart-releaser-action@vizv-pulumi
       env:
         CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-      continue-on-error: true
