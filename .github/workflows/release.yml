@@ -4,6 +4,8 @@ on:
   push:
     branches:
     - workflows
+  schedule:
+  - cron: '0 0 * * *'
 
 jobs:
   release:
