@@ -23,7 +23,9 @@ Currently contains:
 <br>当前包含：
 
 * [local-path-provisioner](https://github.com/rancher/local-path-provisioner)
+* [metallb](https://github.com/metallb/metallb)
 * [ingress-nginx](https://github.com/kubernetes/ingress-nginx)
+* [cert-manager](https://github.com/jetstack/cert-manager)
 
 License information for these projects can be found in their repositories.
 <br> 这些项目的许可证信息可以在他们的代码仓库中查到。
