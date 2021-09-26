@@ -36,6 +36,20 @@ jobs:
         git commit -am 'Commit local-path-provisioner charts'
         rm -rf tmp/local-path-provisioner
 
+    # Add metallb charts
+    - name: Checkout metallb
+      uses: actions/checkout@v2
+      with:
+        repository: metallb/metallb
+        path: tmp/metallb
+    - name: Commit metallb charts
+      run: |
+        mkdir -p charts
+        cp -a tmp/metallb/charts/metallb charts/metallb
+        git add -A
+        git commit -am 'Commit metallb charts'
+        rm -rf tmp/metallb
+
     # Add ingress-nginx charts
     - name: Checkout ingress-nginx
       uses: actions/checkout@v2
