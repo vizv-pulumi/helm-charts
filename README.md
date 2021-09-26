@@ -23,6 +23,7 @@ Currently contains:
 <br>当前包含：
 
 * [local-path-provisioner](https://github.com/rancher/local-path-provisioner)
+* [metallb](https://github.com/metallb/metallb)
 * [ingress-nginx](https://github.com/kubernetes/ingress-nginx)
 
 License information for these projects can be found in their repositories.
