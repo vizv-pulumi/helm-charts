@@ -44,4 +44,20 @@ entries:
     urls:
     - https://github.com/vizv-pulumi/helm-charts/releases/download/local-path-provisioner-0.0.20/local-path-provisioner-0.0.20.tgz
     version: 0.0.20
-generated: "2021-09-25T18:01:03.015588168Z"
+  metallb:
+  - apiVersion: v2
+    appVersion: v0.0.0
+    created: "2021-09-26T18:43:30.18865506Z"
+    description: A network load-balancer implementation for Kubernetes using standard
+      routing protocols
+    digest: b8a287c31e625d2fccfbfd29264800c84e5f94912c1db81ec6d57e561edbbd28
+    home: https://metallb.universe.tf
+    icon: https://metallb.universe.tf/images/logo/metallb-white.png
+    name: metallb
+    sources:
+    - https://github.com/metallb/metallb
+    type: application
+    urls:
+    - https://github.com/vizv-pulumi/helm-charts/releases/download/metallb-0.0.0/metallb-0.0.0.tgz
+    version: 0.0.0
+generated: "2021-09-26T18:43:30.18866376Z"
