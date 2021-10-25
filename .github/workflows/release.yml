@@ -22,8 +22,8 @@ jobs:
     - name: Install Helm
       uses: azure/setup-helm@v1
 
-    # Add local-path-provisioner charts
-    - name: Commit local-path-provisioner charts
+    # Add local-path-provisioner chart
+    - name: Commit local-path-provisioner chart
       run: |
         CHART_NAME="local-path-provisioner"
         CHART_REPO="rancher/local-path-provisioner"
@@ -38,8 +38,8 @@ jobs:
         git commit -am "Commit ${CHART_NAME} chart"
         rm -rf "$CHART_DIR"
 
-    # Add metallb charts
-    - name: Commit metallb charts
+    # Add metallb chart
+    - name: Commit metallb chart
       run: |
         CHART_NAME="metallb"
         CHART_REPO="metallb/metallb"
@@ -54,8 +54,8 @@ jobs:
         git commit -am "Commit ${CHART_NAME} chart"
         rm -rf "$CHART_DIR"
 
-    # Add ingress-nginx charts
-    - name: Commit ingress-nginx charts
+    # Add ingress-nginx chart
+    - name: Commit ingress-nginx chart
       run: |
         CHART_NAME="ingress-nginx"
         CHART_REPO="kubernetes/ingress-nginx"
@@ -64,6 +64,22 @@ jobs:
         CHART_DIR="$(mktemp -d)"
         CHART_URL="$(wget -qO- "https://api.github.com/repos/${CHART_REPO}/tags" | grep tarball_url | head -1 | grep -o 'https://[^"]*')"
         wget -qO- "$CHART_URL" | tar zxv -C "$CHART_DIR" --strip-components="$(( "$(echo "$CHART_PATH" | grep -c /)" + 2 ))" --wildcards "*/${CHART_PATH}"
+        mkdir -p charts
+        cp -a "$CHART_DIR" "charts/${CHART_NAME}"
+        git add -A
+        git commit -am "Commit ${CHART_NAME} chart"
+        rm -rf "$CHART_DIR"
+
+    # Add cert-manager chart
+    - name: Commit cert-manager chart
+      run: |
+        CHART_NAME="cert-manager"
+        CHART_REPO="https://charts.jetstack.io"
+
+        CHART_DIR="$(mktemp -d)"
+        CHART_URL="$(wget -qO- "${CHART_REPO}/index.yaml" | grep '^\s*urls:' -A1 | grep tgz | grep -v -- '-\(alpha\|beta\)\.' | head -1 | sed 's/^\s*-\s*//g' | grep '[^"]*' -o)"
+        grep -q '^http' <<<"$CHART_URL" || CHART_URL="${CHART_REPO}/${CHART_URL}"
+        wget -qO- "$CHART_URL" | tar zxv -C "$CHART_DIR" --strip-components=1
         mkdir -p charts
         cp -a "$CHART_DIR" "charts/${CHART_NAME}"
         git add -A
