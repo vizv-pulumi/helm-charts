@@ -3,6 +3,34 @@ entries:
   ingress-nginx:
   - annotations:
       artifacthub.io/changes: |
+        - Disable builtin ssl_session_cache
+        - Print warning only instead of error if no IngressClass permission is available
+        - Bump internal libraries versions
+        - Fix documentations
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
+    appVersion: 1.0.4
+    created: "2021-10-25T15:35:52.149997781Z"
+    description: Ingress controller for Kubernetes using NGINX as a reverse proxy
+      and load balancer
+    digest: 9fae72c4779d32b8162bf1038a65a0e9bf70340d4ed06f33a0e6508fcf5a1ba3
+    home: https://github.com/kubernetes/ingress-nginx
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
+    keywords:
+    - ingress
+    - nginx
+    kubeVersion: '>=1.19.0-0'
+    maintainers:
+    - name: ChiefAlexander
+    name: ingress-nginx
+    sources:
+    - https://github.com/kubernetes/ingress-nginx
+    type: application
+    urls:
+    - https://github.com/vizv-pulumi/helm-charts/releases/download/ingress-nginx-4.0.6/ingress-nginx-4.0.6.tgz
+    version: 4.0.6
+  - annotations:
+      artifacthub.io/changes: |
         - Downgrade NGINX to v1.19.9
         - Update Base Image to alpine 3.14.2
       artifacthub.io/prerelease: "false"
@@ -46,6 +74,21 @@ entries:
     version: 0.0.20
   metallb:
   - apiVersion: v2
+    appVersion: v0.10.3
+    created: "2021-10-25T15:35:52.837404974Z"
+    description: A network load-balancer implementation for Kubernetes using standard
+      routing protocols
+    digest: 9838b555f054aa91d79773a2f1da8a7ce98cb7159cface1ad6f414320d9fc997
+    home: https://metallb.universe.tf
+    icon: https://metallb.universe.tf/images/logo/metallb-white.png
+    name: metallb
+    sources:
+    - https://github.com/metallb/metallb
+    type: application
+    urls:
+    - https://github.com/vizv-pulumi/helm-charts/releases/download/metallb-0.10.3/metallb-0.10.3.tgz
+    version: 0.10.3
+  - apiVersion: v2
     appVersion: v0.0.0
     created: "2021-09-26T18:43:30.18865506Z"
     description: A network load-balancer implementation for Kubernetes using standard
@@ -60,4 +103,4 @@ entries:
     urls:
     - https://github.com/vizv-pulumi/helm-charts/releases/download/metallb-0.0.0/metallb-0.0.0.tgz
     version: 0.0.0
-generated: "2021-09-26T18:43:30.18866376Z"
+generated: "2021-10-25T15:35:52.837416874Z"
