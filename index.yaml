@@ -29,32 +29,6 @@ entries:
     urls:
     - https://github.com/vizv-pulumi/helm-charts/releases/download/ingress-nginx-4.0.6/ingress-nginx-4.0.6.tgz
     version: 4.0.6
-  - annotations:
-      artifacthub.io/changes: |
-        - Downgrade NGINX to v1.19.9
-        - Update Base Image to alpine 3.14.2
-      artifacthub.io/prerelease: "false"
-    apiVersion: v2
-    appVersion: 1.0.1
-    created: "2021-09-25T18:01:02.806417455Z"
-    description: Ingress controller for Kubernetes using NGINX as a reverse proxy
-      and load balancer
-    digest: 0fab341479dd6b1dd453fb08ca74b0b5cfbeffdb45677136d4301bfd0808bb48
-    home: https://github.com/kubernetes/ingress-nginx
-    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
-    keywords:
-    - ingress
-    - nginx
-    kubeVersion: '>=1.19.0-0'
-    maintainers:
-    - name: ChiefAlexander
-    name: ingress-nginx
-    sources:
-    - https://github.com/kubernetes/ingress-nginx
-    type: application
-    urls:
-    - https://github.com/vizv-pulumi/helm-charts/releases/download/ingress-nginx-4.0.2/ingress-nginx-4.0.2.tgz
-    version: 4.0.2
   local-path-provisioner:
   - apiVersion: v1
     appVersion: v0.0.20
@@ -88,19 +62,4 @@ entries:
     urls:
     - https://github.com/vizv-pulumi/helm-charts/releases/download/metallb-0.10.3/metallb-0.10.3.tgz
     version: 0.10.3
-  - apiVersion: v2
-    appVersion: v0.0.0
-    created: "2021-09-26T18:43:30.18865506Z"
-    description: A network load-balancer implementation for Kubernetes using standard
-      routing protocols
-    digest: b8a287c31e625d2fccfbfd29264800c84e5f94912c1db81ec6d57e561edbbd28
-    home: https://metallb.universe.tf
-    icon: https://metallb.universe.tf/images/logo/metallb-white.png
-    name: metallb
-    sources:
-    - https://github.com/metallb/metallb
-    type: application
-    urls:
-    - https://github.com/vizv-pulumi/helm-charts/releases/download/metallb-0.0.0/metallb-0.0.0.tgz
-    version: 0.0.0
-generated: "2021-10-25T15:35:52.837416874Z"
+generated: "2021-10-25T15:43:25.024974645Z"
