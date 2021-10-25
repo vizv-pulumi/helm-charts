@@ -23,46 +23,52 @@ jobs:
       uses: azure/setup-helm@v1
 
     # Add local-path-provisioner charts
-    - name: Checkout local-path-provisioner
-      uses: actions/checkout@v2
-      with:
-        repository: rancher/local-path-provisioner
-        path: tmp/local-path-provisioner
     - name: Commit local-path-provisioner charts
       run: |
+        CHART_NAME="local-path-provisioner"
+        CHART_REPO="rancher/local-path-provisioner"
+        CHART_PATH="deploy/chart"
+
+        CHART_DIR="$(mktemp -d)"
+        CHART_URL="$(wget -qO- "https://api.github.com/repos/${CHART_REPO}/tags" | grep tarball_url | head -1 | grep -o 'https://[^"]*')"
+        wget -qO- "$CHART_URL" | tar zxv -C "$CHART_DIR" --strip-components="$(( "$(echo "$CHART_PATH" | grep -c /)" + 2 ))" --wildcards "*/${CHART_PATH}"
         mkdir -p charts
-        cp -a tmp/local-path-provisioner/deploy/chart charts/local-path-provisioner
+        cp -a "$CHART_DIR" "charts/${CHART_NAME}"
         git add -A
-        git commit -am 'Commit local-path-provisioner charts'
-        rm -rf tmp/local-path-provisioner
+        git commit -am "Commit ${CHART_NAME} chart"
+        rm -rf "$CHART_DIR"
 
     # Add metallb charts
-    - name: Checkout metallb
-      uses: actions/checkout@v2
-      with:
-        repository: metallb/metallb
-        path: tmp/metallb
     - name: Commit metallb charts
       run: |
+        CHART_NAME="metallb"
+        CHART_REPO="metallb/metallb"
+        CHART_PATH="charts/metallb"
+
+        CHART_DIR="$(mktemp -d)"
+        CHART_URL="$(wget -qO- "https://api.github.com/repos/${CHART_REPO}/tags" | grep tarball_url | head -1 | grep -o 'https://[^"]*')"
+        wget -qO- "$CHART_URL" | tar zxv -C "$CHART_DIR" --strip-components="$(( "$(echo "$CHART_PATH" | grep -c /)" + 2 ))" --wildcards "*/${CHART_PATH}"
         mkdir -p charts
-        cp -a tmp/metallb/charts/metallb charts/metallb
+        cp -a "$CHART_DIR" "charts/${CHART_NAME}"
         git add -A
-        git commit -am 'Commit metallb charts'
-        rm -rf tmp/metallb
+        git commit -am "Commit ${CHART_NAME} chart"
+        rm -rf "$CHART_DIR"
 
     # Add ingress-nginx charts
-    - name: Checkout ingress-nginx
-      uses: actions/checkout@v2
-      with:
-        repository: kubernetes/ingress-nginx
-        path: tmp/ingress-nginx
     - name: Commit ingress-nginx charts
       run: |
+        CHART_NAME="ingress-nginx"
+        CHART_REPO="kubernetes/ingress-nginx"
+        CHART_PATH="charts/ingress-nginx"
+
+        CHART_DIR="$(mktemp -d)"
+        CHART_URL="$(wget -qO- "https://api.github.com/repos/${CHART_REPO}/tags" | grep tarball_url | head -1 | grep -o 'https://[^"]*')"
+        wget -qO- "$CHART_URL" | tar zxv -C "$CHART_DIR" --strip-components="$(( "$(echo "$CHART_PATH" | grep -c /)" + 2 ))" --wildcards "*/${CHART_PATH}"
         mkdir -p charts
-        cp -a tmp/ingress-nginx/charts/ingress-nginx charts/ingress-nginx
+        cp -a "$CHART_DIR" "charts/${CHART_NAME}"
         git add -A
-        git commit -am 'Commit ingress-nginx charts'
-        rm -rf tmp/ingress-nginx
+        git commit -am "Commit ${CHART_NAME} chart"
+        rm -rf "$CHART_DIR"
 
     # Push!
     - name: Push to release branch
