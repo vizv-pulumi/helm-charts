@@ -4,6 +4,29 @@ entries:
   - annotations:
       artifacthub.io/prerelease: "false"
     apiVersion: v1
+    appVersion: v1.6.1
+    created: "2021-11-26T03:11:34.675025582Z"
+    description: A Helm chart for cert-manager
+    digest: 37f566d60c72a8f75efe891513b82ad7487962929fb6fcd3158b28468f197079
+    home: https://github.com/jetstack/cert-manager
+    icon: https://raw.githubusercontent.com/jetstack/cert-manager/master/logo/logo.png
+    keywords:
+    - cert-manager
+    - kube-lego
+    - letsencrypt
+    - tls
+    maintainers:
+    - email: cert-manager-maintainers@googlegroups.com
+      name: cert-manager-maintainers
+    name: cert-manager
+    sources:
+    - https://github.com/jetstack/cert-manager
+    urls:
+    - https://github.com/vizv-pulumi/helm-charts/releases/download/cert-manager-v1.6.1/cert-manager-v1.6.1.tgz
+    version: v1.6.1
+  - annotations:
+      artifacthub.io/prerelease: "false"
+    apiVersion: v1
     appVersion: v1.5.4
     created: "2021-10-25T17:49:29.814701073Z"
     description: A Helm chart for cert-manager
@@ -112,6 +135,21 @@ entries:
     version: 0.0.19
   metallb:
   - apiVersion: v2
+    appVersion: v0.11.0
+    created: "2021-11-26T03:11:35.153093142Z"
+    description: A network load-balancer implementation for Kubernetes using standard
+      routing protocols
+    digest: 78f412c92186a062dc1b037f41fc5eec15f563ad99456967691a6a281069eda5
+    home: https://metallb.universe.tf
+    icon: https://metallb.universe.tf/images/logo/metallb-white.png
+    name: metallb
+    sources:
+    - https://github.com/metallb/metallb
+    type: application
+    urls:
+    - https://github.com/vizv-pulumi/helm-charts/releases/download/metallb-0.11.0/metallb-0.11.0.tgz
+    version: 0.11.0
+  - apiVersion: v2
     appVersion: v0.10.3
     created: "2021-10-25T15:35:52.837404974Z"
     description: A network load-balancer implementation for Kubernetes using standard
@@ -126,4 +164,4 @@ entries:
     urls:
     - https://github.com/vizv-pulumi/helm-charts/releases/download/metallb-0.10.3/metallb-0.10.3.tgz
     version: 0.10.3
-generated: "2021-10-25T17:49:30.725641685Z"
+generated: "2021-11-26T03:11:35.153108142Z"
